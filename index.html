@@ -4,167 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bajo el Cielo de Mayo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Prata&family=Cormorant+Garamond:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Prata&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fondo-tabaco: #120f0d; /* Negro cálido y orgánico */
-            --bronce-piel: #b8926a;   /* Tono piel/bronce elegante */
-            --rojo-pasion: #9e2a2b;   /* Rojo profundo, tipo vino, con luz propia */
-            --blanco-marfil: #e5e0d5;
+            --fondo-luz: #fdfaf5;    /* Un crema casi blanco, muy brillante y limpio */
+            --oro-beggar: #9c7c38;   /* Oro con cuerpo */
+            --rojo-pasion: #d90429;  /* Rojo vibrante y puro */
+            --texto-negro: #1a1a1a;
         }
 
         body {
-            background-color: var(--fondo-tabaco);
-            color: var(--blanco-marfil);
+            background-color: var(--fondo-luz);
+            color: var(--texto-negro);
             font-family: 'Cormorant Garamond', serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-image: radial-gradient(circle at 50% 50%, rgba(158, 42, 43, 0.08) 0%, transparent 80%);
+            /* Una sutil textura de papel premium */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
 
-        .contenedor-limpio {
+        .contenedor-maestro {
             width: 90%;
-            max-width: 950px;
+            max-width: 1000px;
             display: grid;
-            grid-template-columns: 1fr 300px; /* Beggar vs Alfred, equilibrio real */
-            gap: 40px;
-            align-items: start;
+            grid-template-columns: 1fr 320px;
+            gap: 50px;
+            padding: 60px;
+            background: white;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05); /* Sombra suave, no agresiva */
+            border: 1px solid rgba(156, 124, 56, 0.1);
         }
 
         header {
             grid-column: 1 / -1;
-            text-align: left;
-            border-bottom: 1px solid rgba(184, 146, 106, 0.2);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         h1 {
             font-family: 'Italiana', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(3rem, 7vw, 5rem);
             margin: 0;
-            color: var(--rojo-pasion);
-            text-transform: uppercase;
-            letter-spacing: -1px;
+            color: var(--texto-negro);
+            letter-spacing: -2px;
+            line-height: 1;
         }
 
         .tagline {
             font-family: 'Prata', serif;
             font-size: 0.8rem;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            color: var(--bronce-piel);
-            margin-top: 10px;
+            color: var(--rojo-pasion);
+            margin-top: 15px;
         }
 
-        /* Beggar: Navegación por tipografía, no por bloques pesados */
-        .beggar-nav {
+        /* Secciones Beggar */
+        .seccion-beggar {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 30px;
         }
 
-        .link-sensual {
+        .acceso-directo {
             text-decoration: none;
-            color: var(--blanco-marfil);
-            padding: 20px;
-            border-left: 2px solid transparent;
-            transition: 0.4s;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .link-sensual:hover {
-            border-left-color: var(--rojo-pasion);
-            background: rgba(158, 42, 43, 0.05);
-            padding-left: 35px;
-        }
-
-        .link-sensual h2 {
-            font-family: 'Prata', serif;
-            margin: 0;
-            font-size: 1.6rem;
-            color: var(--bronce-piel);
-        }
-
-        /* Alfred Steppenwolf: El sello de autor */
-        .as-panel {
-            border: 1px solid var(--bronce-piel);
+            color: var(--texto-negro);
             padding: 30px;
-            text-align: center;
-            background: rgba(184, 146, 106, 0.03);
-            position: sticky;
-            top: 20px;
-        }
-
-        .as-logo {
-            font-family: 'Italiana', serif;
-            font-size: 4rem;
-            line-height: 1;
-            color: var(--rojo-pasion);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .btn-taller {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: 1px solid var(--rojo-pasion);
-            color: var(--rojo-pasion);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            border-bottom: 1px solid #eee;
             transition: 0.3s;
         }
 
-        .btn-taller:hover {
-            background: var(--rojo-pasion);
+        .acceso-directo:hover {
+            background: #fffcf7;
+            border-bottom-color: var(--oro-beggar);
+            transform: translateX(10px);
+        }
+
+        .acceso-directo h2 {
+            font-family: 'Prata', serif;
+            font-size: 2rem;
+            margin: 0;
+            color: var(--oro-beggar);
+        }
+
+        /* Alfred Steppenwolf: Elegancia y Brillo */
+        .bloque-as {
+            border: 2px solid var(--texto-negro);
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: 0.4s;
+        }
+
+        .bloque-as:hover {
+            border-color: var(--rojo-pasion);
+            box-shadow: 20px 20px 0px var(--rojo-pasion);
+        }
+
+        .as-siglas {
+            font-family: 'Italiana', serif;
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .boton-as {
+            margin-top: 30px;
+            padding: 15px;
+            background: var(--texto-negro);
             color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            font-weight: bold;
         }
 
         footer {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 60px 0 20px;
+            margin-top: 50px;
             font-size: 0.7rem;
-            letter-spacing: 3px;
-            opacity: 0.5;
+            letter-spacing: 4px;
+            opacity: 0.6;
         }
 
-        @media (max-width: 800px) {
-            .contenedor-limpio { grid-template-columns: 1fr; }
-            .as-panel { position: static; }
+        @media (max-width: 850px) {
+            .contenedor-maestro { grid-template-columns: 1fr; padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="contenedor-limpio">
+    <div class="contenedor-maestro">
         <header>
             <h1>Bajo el Cielo de Mayo</h1>
             <div class="tagline">Insurrección · Poesía · Carne</div>
         </header>
 
-        <nav class="beggar-nav">
-            <a href="#proscritas" class="link-sensual">
+        <nav class="seccion-beggar">
+            <a href="#proscritas" class="acceso-directo">
                 <h2>Palabras Proscritas</h2>
-                <p style="font-style: italic; margin: 5px 0 0; opacity: 0.7;">Donde el deseo se escribe sin permiso.</p>
+                <p style="font-style: italic; margin-top: 10px;">La piel se hace verbo. El deseo no pide permiso.</p>
             </a>
-            <a href="#cronicas" class="link-sensual">
+            <a href="#cronicas" class="acceso-directo">
                 <h2>Crónicas de Mayo</h2>
-                <p style="font-style: italic; margin: 5px 0 0; opacity: 0.7;">Ficciones y metamundos digitales.</p>
+                <p style="font-style: italic; margin-top: 10px;">Andanzas y avatares bajo el sol virtual.</p>
             </a>
         </nav>
 
-        <aside class="as-panel">
-            <span class="as-logo">AS</span>
-            <p style="font-family: 'Prata', serif; font-size: 1rem; margin: 0;">ALFRED STEPPENWOLF</p>
-            <p style="font-style: italic; font-size: 0.8rem; margin-top: 10px;">Visiones Plásticas</p>
-            <a href="#taller" class="btn-taller">VER OBRA</a>
+        <aside class="bloque-as">
+            <span class="as-siglas">AS</span>
+            <p style="font-family: 'Prata', serif; font-size: 1.1rem; margin: 0;">Alfred Steppenwolf</p>
+            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Visiones Plásticas</p>
+            <a href="#taller" class="boton-as">Ver Obra</a>
         </aside>
 
         <footer>
