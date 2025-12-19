@@ -7,166 +7,182 @@
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Prata&family=Cormorant+Garamond:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sangre-lienzo: #8b0000;
-            --oro-viejo: #c5a059;
-            --humo-transparente: rgba(0, 0, 0, 0.6); /* Clave para el claroscuro */
+            --oro-suave: #c5a059;
+            --sangre-calima: #8b0000;
+            --velo-negro: rgba(0, 0, 0, 0.5);
         }
 
         body {
             margin: 0;
             padding: 0;
-            /* Usamos la imagen de óleo como fondo total */
             background: #000 url('AS_2012_01.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Cormorant Garamond', serif;
             color: #f4f1ea;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Elimina el scroll bar */
+        }
+
+        /* Menú Superior: Expansión y Conexión */
+        .barra-navegacion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            z-index: 10;
+        }
+
+        .menu-calima a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 25px;
+            font-family: 'Prata', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .menu-calima a:hover { color: var(--oro-suave); }
+
+        .link-verde-templo {
+            color: #4ade80; /* Un verde sutil */
+            text-decoration: none;
+            font-family: 'Prata', serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            border: 1px solid #4ade80;
+            padding: 5px 12px;
+            transition: 0.3s;
+        }
+
+        .link-verde-templo:hover { background: #4ade80; color: #000; }
+
+        /* Contenedor Principal Optimizado */
+        .escena-central {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            padding: 20px;
         }
 
-        /* Contenedor sin "caja blanca", solo un velo sutil */
-        .escena-literaria {
+        .velo-literario {
             width: 90%;
-            max-width: 900px;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px); /* Suaviza el lienzo detrás del texto */
-            border-left: 1px solid var(--oro-viejo);
+            max-width: 850px;
+            padding: 30px;
+            background: var(--velo-negro);
+            backdrop-filter: blur(8px);
+            border-left: 2px solid var(--oro-suave);
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            margin: 40px 0; /* Margen para asegurar que el copyright no se pegue */
+            gap: 20px;
         }
 
-        header {
-            text-align: left;
-        }
-
-        .firma-autor {
-            font-family: 'Prata', serif;
-            font-size: 0.85rem;
-            letter-spacing: 7px;
-            text-transform: uppercase;
-            color: var(--oro-viejo);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-
-        h1 {
+        header h1 {
             font-family: 'Italiana', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin: 10px 0;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            margin: 0;
             line-height: 1;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(0,0,0,1);
         }
 
-        .subtitulo-beggar {
-            font-style: italic;
-            font-size: 1.2rem;
-            color: var(--oro-viejo);
-            max-width: 500px;
+        .tagline-autor {
+            font-family: 'Prata', serif;
+            color: var(--oro-suave);
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
 
-        /* Navegación literaria: el centro de la página */
-        .indices-beggar {
+        /* Lista de Contenidos Estilizada */
+        .lista-obras {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 10px;
         }
 
-        .enlace-prosa {
+        .btn-obra {
             text-decoration: none;
             color: #fff;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            transition: 0.4s;
         }
 
-        .enlace-prosa:hover {
+        .btn-obra:hover {
             background: rgba(139, 0, 0, 0.2);
-            border-color: var(--sangre-lienzo);
-            transform: translateX(15px);
+            border-color: var(--sangre-calima);
+            transform: translateX(10px);
         }
 
-        .enlace-prosa h2 {
-            font-family: 'Prata', serif;
-            margin: 0;
-            font-size: 1.8rem;
-            color: var(--oro-viejo);
-        }
-
-        /* Alfred como crédito de ilustración, no como dueño del espacio */
-        .credito-ilustrador {
-            align-self: flex-end;
+        /* Alfred: Crédito Secundario */
+        .credito-as {
             text-align: right;
-            font-size: 0.75rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 15px;
+            font-size: 0.7rem;
             opacity: 0.8;
-        }
-
-        .as-sigla {
-            font-family: 'Italiana', serif;
-            font-size: 2.2rem;
-            color: var(--sangre-lienzo);
-            margin-left: 10px;
-            vertical-align: middle;
+            margin-top: 10px;
         }
 
         footer {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
+            background: rgba(0,0,0,0.8);
             text-align: center;
-            color: #fff;
-            text-shadow: 1px 1px 2px #000;
-            background: rgba(0,0,0,0.5);
             padding: 10px;
-            width: 100%;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
         }
 
         @media (max-width: 768px) {
-            .escena-literaria { width: 100%; border-left: none; }
+            body { overflow-y: auto; height: auto; }
+            .barra-navegacion { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-        <main class="escena-literaria">
+    <nav class="barra-navegacion">
+        <div class="menu-calima">
+            <a href="#">Calima (Coming Soon)</a>
+            <a href="#">Indicios</a>
+            <a href="#">Ensayos</a>
+        </div>
+        <a href="URL_VERDE_TEMPLO" class="link-verde-templo">VERDE TEMPLO</a>
+    </nav>
+
+    <div class="escena-central">
+        <main class="velo-literario">
             <header>
-                <span class="firma-autor">Beggar Mayo Slaegon</span>
+                <div class="tagline-autor">Beggar Mayo Slaegon</div>
                 <h1>Bajo el Cielo de Mayo</h1>
-                <div class="subtitulo-beggar">Poesía, mística y la estética de la insurrección.</div>
+                <p style="font-style: italic; color: var(--oro-suave); margin-top: 5px;">La palabra como fetiche y revelación.</p>
             </header>
 
-            <nav class="indices-beggar">
-                <a href="#proscritas" class="enlace-prosa">
-                    <h2>Palabras Proscritas</h2>
-                    <p style="margin:5px 0 0; opacity: 0.7;">El verbo encarnado en la página.</p>
+            <nav class="lista-obras">
+                <a href="#proscritas" class="btn-obra">
+                    <strong style="font-family: 'Prata'; font-size: 1.4rem;">Palabras Proscritas</strong><br>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">El verbo encarnado en la página.</span>
                 </a>
-                <a href="#cronicas" class="enlace-prosa">
-                    <h2>Crónicas de Mayo</h2>
-                    <p style="margin:5px 0 0; opacity: 0.7;">Relatos desde los márgenes de lo real.</p>
+                <a href="#cronicas" class="btn-obra">
+                    <strong style="font-family: 'Prata'; font-size: 1.4rem;">Crónicas de Mayo</strong><br>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">Relatos desde los márgenes de lo real.</span>
                 </a>
             </nav>
 
-            <div class="credito-ilustrador">
-                Ilustraciones: <strong>Alfred Steppenwolf</strong> 
-                <span class="as-sigla">AS</span>
-                <br>
-                <a href="#taller" style="color: var(--oro-viejo); text-decoration: none; font-weight: bold;">[ INGRESAR AL TALLER ]</a>
+            <div class="credito-as">
+                Ilustraciones: Alfred Steppenwolf 
+                <span style="font-family: 'Italiana'; color: var(--sangre-calima); font-size: 1.8rem; vertical-align: middle; margin-left: 5px;">AS</span>
             </div>
         </main>
-
-        <footer>
-            © 2025 JOSÉ ANTONIO DE LA VEGA TORRES. TODOS LOS DERECHOS RESERVADOS.
-        </footer>
     </div>
+
+    <footer>
+        © 2025 JOSÉ ANTONIO DE LA VEGA TORRES.
+    </footer>
 
 </body>
 </html>
