@@ -7,41 +7,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Prata&family=Cormorant+Garamond:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fondo-pergamino: #f4f1ea; /* Más cálido, menos cansado que el blanco */
-            --verde-templo: #0a2b1e;    /* El vínculo con tu otra faceta */
+            --verde-templo: #0a2b1e;
             --oro-beggar: #9c7c38;
             --rojo-subversivo: #b22222;
-            --texto-principal: #1a1a1a;
+            --blanco-transparente: rgba(255, 255, 255, 0.85);
+            --hueso-fondo: #f4f1ea;
         }
 
         body {
-            background-color: var(--fondo-pergamino);
-            color: var(--texto-principal);
-            font-family: 'Cormorant Garamond', serif;
             margin: 0;
+            padding: 0;
+            background-color: var(--hueso-fondo);
+            /* Carga del archivo lineascurvas.jpg */
+            background-image: url('lineascurvas.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            /* Descentrada y cargada a la izquierda */
+            background-position: left 10% center; 
+            font-family: 'Cormorant Garamond', serif;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Forzamos a que no haya scroll */
             overflow: hidden;
-            background-image: radial-gradient(circle at center, rgba(10, 43, 30, 0.03) 0%, transparent 70%);
+        }
+
+        .capa-contraste {
+            /* Esta capa ayuda a que el dibujo respire sin que el texto sea ilegible */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, transparent 20%, var(--hueso-fondo) 100%);
         }
 
         .layout-principal {
             width: 90%;
             max-width: 1050px;
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 40px;
             align-items: center;
-            padding: 20px;
-            border-top: 3px solid var(--verde-templo); /* Guiño a Verde Templo */
+            z-index: 2;
         }
 
         header {
             grid-column: 1 / -1;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .autor-header {
@@ -50,45 +64,42 @@
             letter-spacing: 6px;
             text-transform: uppercase;
             color: var(--verde-templo);
-            margin-bottom: 5px;
-            display: block;
         }
 
         h1 {
             font-family: 'Italiana', serif;
-            font-size: 3.8rem;
-            margin: 0;
-            line-height: 1;
-            color: var(--texto-principal);
+            font-size: 4rem;
+            margin: 10px 0;
+            color: #1a1a1a;
         }
 
         .tagline {
             font-style: italic;
             color: var(--rojo-subversivo);
             font-size: 1.1rem;
-            margin-top: 5px;
         }
 
-        /* Bloque Beggar Mayo */
+        /* Bloque Beggar Mayo - Con transparencia para dejar ver el fondo */
         .beggar-links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         .card-acceso {
             text-decoration: none;
-            color: var(--texto-principal);
-            padding: 20px;
+            color: #1a1a1a;
+            padding: 25px;
             border: 1px solid rgba(10, 43, 30, 0.1);
-            background: rgba(255, 255, 255, 0.4);
+            background: var(--blanco-transparente);
+            backdrop-filter: blur(2px); /* Efecto de cristal para elegancia */
             transition: 0.4s;
         }
 
         .card-acceso:hover {
             border-color: var(--oro-beggar);
             background: white;
-            box-shadow: 10px 10px 0px var(--verde-templo);
+            box-shadow: 15px 15px 0px var(--verde-templo);
         }
 
         .card-acceso h2 {
@@ -98,31 +109,31 @@
             color: var(--oro-beggar);
         }
 
-        /* Bloque Alfred Steppenwolf (Redimensionado para no eclipsar) */
+        /* Bloque Alfred Steppenwolf - Minimalista */
         .as-mini-panel {
-            border: 1px solid var(--texto-principal);
-            padding: 25px;
+            border: 1px solid #1a1a1a;
+            padding: 30px 20px;
             text-align: center;
-            background: white;
-            max-width: 250px;
-            justify-self: center;
+            background: var(--blanco-transparente);
+            max-width: 240px;
+            justify-self: end;
         }
 
         .as-mini-panel .siglas {
             font-family: 'Italiana', serif;
             font-size: 3rem;
-            display: block;
             color: var(--rojo-subversivo);
+            display: block;
         }
 
         .btn-as {
             display: inline-block;
-            margin-top: 15px;
-            padding: 8px 15px;
+            margin-top: 20px;
+            padding: 10px 20px;
             background: var(--verde-templo);
             color: white;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             font-weight: bold;
         }
@@ -132,48 +143,50 @@
             text-align: center;
             font-size: 0.7rem;
             letter-spacing: 3px;
-            margin-top: 30px;
-            opacity: 0.6;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 15px;
+            margin-top: 40px;
+            opacity: 0.7;
+            color: var(--verde-templo);
         }
 
         @media (max-width: 800px) {
-            .layout-principal { grid-template-columns: 1fr; overflow-y: auto; height: auto; }
-            body { overflow-y: auto; }
+            body { background-position: center; overflow-y: auto; height: auto; }
+            .layout-principal { grid-template-columns: 1fr; padding: 40px 20px; }
+            .as-mini-panel { justify-self: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="layout-principal">
-        <header>
-            <span class="autor-header">Beggar Mayo Slaegon</span>
-            <h1>Bajo el Cielo de Mayo</h1>
-            <div class="tagline">La insurrección del deseo en la piel del píxel</div>
-        </header>
+    <div class="capa-contraste">
+        <div class="layout-principal">
+            <header>
+                <span class="autor-header">Beggar Mayo Slaegon</span>
+                <h1>Bajo el Cielo de Mayo</h1>
+                <div class="tagline">La insurrección del deseo en la piel del píxel</div>
+            </header>
 
-        <nav class="beggar-links">
-            <a href="#proscritas" class="card-acceso">
-                <h2>Palabras Proscritas</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Poesía candente y literatura fuera de la norma.</p>
-            </a>
-            <a href="#cronicas" class="card-acceso">
-                <h2>Crónicas de Mayo</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Relatos y andanzas desde el metamundo.</p>
-            </a>
-        </nav>
+            <nav class="beggar-links">
+                <a href="#proscritas" class="card-acceso">
+                    <h2>Palabras Proscritas</h2>
+                    <p>Poesía candente y literatura fuera de la norma.</p>
+                </a>
+                <a href="#cronicas" class="card-acceso">
+                    <h2>Crónicas de Mayo</h2>
+                    <p>Relatos y andanzas desde el metamundo.</p>
+                </a>
+            </nav>
 
-        <aside class="as-mini-panel">
-            <span class="siglas">AS</span>
-            <p style="font-family: 'Prata', serif; font-size: 0.9rem; margin: 0;">ALFRED STEPPENWOLF</p>
-            <p style="font-size: 0.75rem; opacity: 0.7;">Visiones y obra plástica</p>
-            <a href="#taller" class="btn-as">VER REPOSITORIO</a>
-        </aside>
+            <aside class="as-mini-panel">
+                <span class="siglas">AS</span>
+                <p style="font-family: 'Prata', serif; font-size: 0.9rem; margin: 0;">ALFRED STEPPENWOLF</p>
+                <p style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Visiones y obra plástica</p>
+                <a href="#taller" class="btn-as">VER REPOSITORIO</a>
+            </aside>
 
-        <footer>
-            © 2025 JOSÉ ANTONIO DE LA VEGA TORRES. TODOS LOS DERECHOS RESERVADOS.
-        </footer>
+            <footer>
+                © 2025 JOSÉ ANTONIO DE LA VEGA TORRES. TODOS LOS DERECHOS RESERVADOS.
+            </footer>
+        </div>
     </div>
 
 </body>
