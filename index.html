@@ -4,114 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bajo el Cielo de Mayo | Beggar Mayo</title>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@1,700&family=Cormorant+Garamond:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Marcellus&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fondo: #050a07;
-            --verde-obsceno: #0f3d2e;
-            --rojo-pasion: #b30000;
-            --oro-quemado: #8a7344;
-            --blanco-humo: #e0d8c3;
+            --fondo-noche: #0b1410; /* Verde casi negro, muy profundo */
+            --piel-bronce: #c5a059; /* El oro de tu marca, pero más cálido */
+            --rojo-seda: #7e1a1a;  /* Un rojo profundo y maduro */
+            --sombra: rgba(0, 0, 0, 0.7);
         }
 
         body {
-            background: var(--fondo);
+            background: var(--fondo-noche);
+            /* El gradiente ahora es cálido, simulando una luz de vela lateral */
             background-image: 
-                linear-gradient(rgba(5, 10, 7, 0.8), rgba(5, 10, 7, 0.8)),
-                url('textura-papel-quemado.jpg'); /* Opcional: una textura de fondo */
-            color: var(--blanco-humo);
+                radial-gradient(circle at 80% 50%, rgba(197, 160, 89, 0.1) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(11, 20, 16, 0.2) 0%, var(--fondo-noche) 100%);
+            color: #f4eee1;
             font-family: 'Cormorant Garamond', serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Título con fuerza revolucionaria */
         header {
+            padding: 100px 20px 40px;
             text-align: center;
-            padding: 80px 20px;
-            border-bottom: 1px double var(--rojo-pasion);
-            width: 80%;
         }
 
         h1 {
-            font-family: 'UnifrakturMaguntia', serif; /* Tipografía gótica/subversiva */
-            font-size: clamp(3rem, 8vw, 5rem);
-            color: var(--rojo-pasion);
+            font-family: 'Pinyon Script', cursive; /* Elegancia caligráfica, casi manual */
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            color: var(--piel-bronce);
             margin: 0;
-            text-shadow: 3px 3px 0px var(--verde-obsceno);
+            line-height: 0.8;
+        }
+
+        .subtitulo {
+            font-family: 'Marcellus', serif;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            color: var(--rojo-seda);
+            font-weight: bold;
+        }
+
+        .muro {
+            display: flex;
+            flex-direction: column;
+            gap: 2px; /* Espaciado mínimo para crear tensión visual */
+            width: 100%;
+            max-width: 800px;
+            margin-top: 50px;
+        }
+
+        .invitacion {
+            text-decoration: none;
+            color: #f4eee1;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .invitacion:hover {
+            background: rgba(126, 26, 26, 0.1);
+            padding-left: 60px;
+        }
+
+        .invitacion h2 {
+            font-family: 'Marcellus', serif;
+            margin: 0;
+            font-size: 1.8rem;
             letter-spacing: 2px;
         }
 
-        .lema {
-            font-family: 'Playfair Display', serif;
+        .invitacion p {
             font-style: italic;
-            font-size: 1.5rem;
-            margin-top: 10px;
-            color: var(--oro-quemado);
+            opacity: 0.6;
+            margin: 5px 0 0;
         }
 
-        /* Navegación Urgente y Candente */
-        .portal {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin: 60px 0;
-            width: 90%;
-            max-width: 600px;
-        }
-
-        .enlace-subversivo {
-            text-decoration: none;
-            color: var(--blanco-humo);
-            font-size: 2rem;
-            padding: 20px;
+        /* Firma Alfred Steppenwolf */
+        .artista-as {
+            margin-top: 60px;
+            padding: 50px;
             text-align: center;
-            border: 1px solid rgba(138, 115, 68, 0.3);
-            position: relative;
-            transition: 0.5s;
-            background: rgba(15, 61, 46, 0.1);
+            border: 1px solid var(--piel-bronce);
+            background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05));
+            width: 80%;
+            max-width: 500px;
         }
 
-        .enlace-subversivo:hover {
-            border-color: var(--rojo-pasion);
-            background: rgba(179, 0, 0, 0.05);
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(179, 0, 0, 0.2);
-        }
-
-        .enlace-subversivo span {
+        .siglas-as {
+            font-family: 'Marcellus', serif;
+            font-size: 3rem;
+            line-height: 1;
+            color: var(--piel-bronce);
+            margin-bottom: 10px;
             display: block;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-top: 5px;
-            color: var(--oro-quemado);
-        }
-
-        /* Sección Alfred Steppenwolf */
-        .as-gallery {
-            margin-top: 50px;
-            padding: 30px;
-            border: 2px solid var(--oro-quemado);
-            text-align: center;
-            background: rgba(0,0,0,0.4);
-        }
-
-        .as-signature {
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            font-size: 2.5rem;
-            color: var(--oro-quemado);
         }
 
         footer {
-            padding: 50px;
-            font-style: italic;
-            opacity: 0.6;
+            padding: 80px 20px;
             text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.4;
         }
     </style>
 </head>
@@ -119,31 +123,30 @@
 
     <header>
         <h1>Bajo el Cielo de Mayo</h1>
-        <p class="lema">La insurrección de la palabra, el fetiche del píxel.</p>
+        <div class="subtitulo">La Palabra como Fetiche y Revelación</div>
     </header>
 
-    <div class="portal">
-        <a href="#proscritas" class="enlace-subversivo">
-            Palabras Proscritas
-            <span>Poesía Atrevida y Candente</span>
+    <nav class="muro">
+        <a href="#proscritas" class="invitacion">
+            <h2>Palabras Proscritas</h2>
+            <p>Donde la piel se hace verbo y el deseo, ley.</p>
         </a>
-        
-        <a href="#cronicas" class="enlace-subversivo">
-            Crónicas de Mayo
-            <span>Ficciones y Metamundos</span>
+        <a href="#cronicas" class="invitacion">
+            <h2>Crónicas de Mayo</h2>
+            <p>Ficciones del metamundo y el espíritu anacoreta.</p>
         </a>
+    </nav>
 
-        <div class="as-gallery">
-            <div class="as-signature">AS</div>
-            <p><strong>Alfred Steppenwolf</strong></p>
-            <p>Ilustraciones, Plástica y Visiones de lo Real</p>
-            <a href="#galeria" style="color: var(--rojo-pasion); text-decoration: none; font-weight: bold;">[ EXPLORAR OBRA ]</a>
-        </div>
+    <div class="artista-as">
+        <span class="siglas-as">AS</span>
+        <p style="margin:0; letter-spacing: 2px;"><strong>ALFRED STEPPENWOLF</strong></p>
+        <p style="font-style: italic; opacity: 0.7;">Plástica, Visiones y Obra Viva</p>
+        <br>
+        <a href="#galeria" style="color: var(--rojo-seda); text-decoration: none; font-weight: bold; border-bottom: 1px solid;">[ INGRESAR AL TALLER ]</a>
     </div>
 
     <footer>
-        "No busques al autor, busca la herida que dejó abierta."<br>
-        Beggar Mayo Slaegon & Alfred Steppenwolf © 2025
+        Beggar Mayo Slaegon & Alfred Steppenwolf — 2025
     </footer>
 
 </body>
