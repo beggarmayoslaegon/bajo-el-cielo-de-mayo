@@ -7,186 +7,180 @@
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Prata&family=Cormorant+Garamond:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --verde-templo: #0a2b1e;
-            --oro-beggar: #9c7c38;
-            --rojo-subversivo: #b22222;
-            --blanco-transparente: rgba(255, 255, 255, 0.85);
-            --hueso-fondo: #f4f1ea;
+            --oro-atardecer: #d4a373;
+            --rojo-sangre: #8b0000;
+            --negro-profundo: #120f0d;
+            --crema-luz: rgba(244, 241, 234, 0.92);
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: var(--hueso-fondo);
-            /* Carga del archivo lineascurvas.jpg */
-            background-image: url('lineascurvas.jpg');
-            background-repeat: no-repeat;
-            background-size: contain;
-            /* Descentrada y cargada a la izquierda */
-            background-position: left 10% center; 
+            background: var(--negro-profundo) url('AS_2012_01.jpg') no-repeat center center fixed;
+            background-size: cover;
             font-family: 'Cormorant Garamond', serif;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            min-height: 100vh;
+            color: #1a1a1a;
         }
 
-        .capa-contraste {
-            /* Esta capa ayuda a que el dibujo respire sin que el texto sea ilegible */
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle, transparent 20%, var(--hueso-fondo) 100%);
-        }
-
-        .layout-principal {
-            width: 90%;
-            max-width: 1050px;
-            display: grid;
-            grid-template-columns: 1.4fr 0.6fr;
-            gap: 40px;
-            align-items: center;
-            z-index: 2;
+        .contenedor-principal {
+            width: 85%;
+            max-width: 900px;
+            background: var(--crema-luz);
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            border-top: 5px solid var(--rojo-sangre);
+            position: relative;
+            /* Evitamos que el copyright toque el borde */
+            margin: 20px 0; 
         }
 
         header {
-            grid-column: 1 / -1;
             text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 20px;
             margin-bottom: 30px;
         }
 
-        .autor-header {
+        .autor-id {
             font-family: 'Prata', serif;
-            font-size: 0.9rem;
-            letter-spacing: 6px;
+            font-size: 0.8rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            color: var(--verde-templo);
+            color: var(--rojo-sangre);
         }
 
         h1 {
             font-family: 'Italiana', serif;
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin: 10px 0;
-            color: #1a1a1a;
+            line-height: 1;
         }
 
-        .tagline {
+        .subtitulo {
             font-style: italic;
-            color: var(--rojo-subversivo);
-            font-size: 1.1rem;
+            font-size: 1.3rem; /* Aumentado para legibilidad */
+            color: #444;
         }
 
-        /* Bloque Beggar Mayo - Con transparencia para dejar ver el fondo */
-        .beggar-links {
+        /* Lista de Contenidos - Preparada para crecer */
+        .lista-beggar {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
         }
 
-        .card-acceso {
+        .item-navegacion {
             text-decoration: none;
-            color: #1a1a1a;
-            padding: 25px;
-            border: 1px solid rgba(10, 43, 30, 0.1);
-            background: var(--blanco-transparente);
-            backdrop-filter: blur(2px); /* Efecto de cristal para elegancia */
-            transition: 0.4s;
+            color: inherit;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: 15px 20px;
+            border: 1px solid transparent;
+            transition: 0.3s;
         }
 
-        .card-acceso:hover {
-            border-color: var(--oro-beggar);
-            background: white;
-            box-shadow: 15px 15px 0px var(--verde-templo);
+        .item-navegacion:hover {
+            background: rgba(139, 0, 0, 0.05);
+            border-color: var(--oro-atardecer);
+            padding-left: 30px;
         }
 
-        .card-acceso h2 {
+        .item-navegacion h2 {
             font-family: 'Prata', serif;
+            font-size: 1.6rem;
             margin: 0;
-            font-size: 1.8rem;
-            color: var(--oro-beggar);
+            color: var(--oro-atardecer);
         }
 
-        /* Bloque Alfred Steppenwolf - Minimalista */
-        .as-mini-panel {
-            border: 1px solid #1a1a1a;
-            padding: 30px 20px;
-            text-align: center;
-            background: var(--blanco-transparente);
-            max-width: 240px;
-            justify-self: end;
+        /* Alfred Steppenwolf como Colaborador Sutil */
+        .colaborador-as {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px double rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
         }
 
-        .as-mini-panel .siglas {
+        .as-firma {
             font-family: 'Italiana', serif;
-            font-size: 3rem;
-            color: var(--rojo-subversivo);
-            display: block;
+            font-size: 2rem;
+            color: var(--rojo-sangre);
         }
 
-        .btn-as {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: var(--verde-templo);
-            color: white;
-            text-decoration: none;
+        .as-info {
             font-size: 0.75rem;
-            letter-spacing: 2px;
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .as-link {
+            color: var(--rojo-sangre);
+            text-decoration: none;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         footer {
-            grid-column: 1 / -1;
             text-align: center;
             font-size: 0.7rem;
             letter-spacing: 3px;
             margin-top: 40px;
-            opacity: 0.7;
-            color: var(--verde-templo);
+            padding-bottom: 10px; /* Margen inferior recuperado */
+            opacity: 0.6;
         }
 
-        @media (max-width: 800px) {
-            body { background-position: center; overflow-y: auto; height: auto; }
-            .layout-principal { grid-template-columns: 1fr; padding: 40px 20px; }
-            .as-mini-panel { justify-self: center; }
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .contenedor-principal { width: 95%; padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="capa-contraste">
-        <div class="layout-principal">
-            <header>
-                <span class="autor-header">Beggar Mayo Slaegon</span>
-                <h1>Bajo el Cielo de Mayo</h1>
-                <div class="tagline">La insurrección del deseo en la piel del píxel</div>
-            </header>
+    <div class="contenedor-principal">
+        <header>
+            <span class="autor-id">Beggar Mayo Slaegon</span>
+            <h1>Bajo el Cielo de Mayo</h1>
+            <div class="subtitulo">La palabra como fetiche y revelación</div>
+        </header>
 
-            <nav class="beggar-links">
-                <a href="#proscritas" class="card-acceso">
+        <nav class="lista-beggar">
+            <a href="#proscritas" class="item-navegacion">
+                <div>
                     <h2>Palabras Proscritas</h2>
-                    <p>Poesía candente y literatura fuera de la norma.</p>
-                </a>
-                <a href="#cronicas" class="card-acceso">
+                    <p style="margin:0; font-size: 0.9rem; opacity: 0.8;">Donde la piel se hace verbo y el deseo, ley.</p>
+                </div>
+                <span>&rsaquo;</span>
+            </a>
+            <a href="#cronicas" class="item-navegacion">
+                <div>
                     <h2>Crónicas de Mayo</h2>
-                    <p>Relatos y andanzas desde el metamundo.</p>
-                </a>
+                    <p style="margin:0; font-size: 0.9rem; opacity: 0.8;">Ficciones del metamundo y el espíritu anacoreta.</p>
+                </div>
+                <span>&rsaquo;</span>
+            </a>
             </nav>
 
-            <aside class="as-mini-panel">
-                <span class="siglas">AS</span>
-                <p style="font-family: 'Prata', serif; font-size: 0.9rem; margin: 0;">ALFRED STEPPENWOLF</p>
-                <p style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Visiones y obra plástica</p>
-                <a href="#taller" class="btn-as">VER REPOSITORIO</a>
-            </aside>
-
-            <footer>
-                © 2025 JOSÉ ANTONIO DE LA VEGA TORRES. TODOS LOS DERECHOS RESERVADOS.
-            </footer>
+        <div class="colaborador-as">
+            <div class="as-info">
+                Ilustraciones y obra plástica de<br>
+                <strong>ALFRED STEPPENWOLF</strong><br>
+                <a href="#taller" class="as-link">Ingresar al Taller</a>
+            </div>
+            <span class="as-firma">AS</span>
         </div>
+
+        <footer>
+            © 2025 JOSÉ ANTONIO DE LA VEGA TORRES.
+        </footer>
     </div>
 
 </body>
